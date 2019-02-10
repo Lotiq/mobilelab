@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         updateColor()
         statusLabel.text = "Enter color"
+        unlockButton.setTitleColor(UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 1), for: .disabled)
     }
     
     @IBAction func sliderMoved(_ sender: UISlider) {
@@ -50,6 +51,10 @@ class ViewController: UIViewController {
             passColor = (Double(rSlider.value)-0.06...Double(rSlider.value)+0.06,Double(gSlider.value)-0.06...Double(gSlider.value)+0.06,Double(bSlider.value)-0.06...Double(bSlider.value)+0.06)
             unlockButton.setTitle("Unlock", for: .normal)
             attempts = 3;
+            rSlider.setValue(0.5, animated: true)
+            gSlider.setValue(0.5, animated: true)
+            bSlider.setValue(0.5, animated: true)
+            updateColor()
             statusLabel.text = "3 Attempts Left"
         }
     }
