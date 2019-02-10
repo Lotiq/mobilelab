@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Catch_Me_If_You_Can" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTN-O6-m34">
+                                <rect key="frame" x="142.5" y="288.5" width="90" height="90"/>
+                                <state key="normal" image="Bird"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bAE-b0-tig"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkL-eh-Jt1">
+                                <rect key="frame" x="168.5" y="34" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vz-WX-aRM">
+                                <rect key="frame" x="187.5" y="647" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The rules of the game are simple: remember the original button and tap it as many times as possible in 1 minute." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGM-1S-TJh" userLabel="Rules">
+                                <rect key="frame" x="40" y="34" width="295" height="81.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GkL-eh-Jt1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4fS-Vg-hy4"/>
+                            <constraint firstItem="3vz-WX-aRM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LRi-hw-gP1"/>
+                            <constraint firstItem="qGM-1S-TJh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="999" constant="14" id="ZPN-Gw-6DN"/>
+                            <constraint firstItem="qGM-1S-TJh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zku-2L-bLU"/>
+                            <constraint firstItem="zTN-O6-m34" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qGM-1S-TJh" secondAttribute="bottom" constant="20" id="bMG-YF-pc7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3vz-WX-aRM" secondAttribute="bottom" constant="20" id="fS0-WH-UiO"/>
+                            <constraint firstAttribute="trailing" secondItem="qGM-1S-TJh" secondAttribute="trailing" constant="40" id="mZW-uu-nBB"/>
+                            <constraint firstItem="GkL-eh-Jt1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="olK-aj-kgU"/>
+                            <constraint firstItem="zTN-O6-m34" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ugo-7Y-vRd"/>
+                            <constraint firstItem="zTN-O6-m34" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" priority="998" id="xG4-ZH-67x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="countLabel" destination="3vz-WX-aRM" id="TWS-uV-fSM"/>
+                        <outlet property="gameButton" destination="zTN-O6-m34" id="h8O-ul-rfl"/>
+                        <outlet property="rulesLabel" destination="qGM-1S-TJh" id="mkw-iL-g1q"/>
+                        <outlet property="timeLabel" destination="GkL-eh-Jt1" id="Nwj-0w-cas"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Bird" width="90" height="90"/>
+    </resources>
+</document>
