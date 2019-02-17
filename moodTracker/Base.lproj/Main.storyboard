@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2be-L5-HtX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iat-ZF-Qgi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,16 +13,16 @@
         <!--Mood Add View Controller-->
         <scene sceneID="vA8-FW-Vl7">
             <objects>
-                <viewController storyboardIdentifier="moodAddVC" id="2be-L5-HtX" customClass="MoodAddViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="moodAddVC" id="2be-L5-HtX" customClass="MoodAddViewController" customModule="moodTracker" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vm4-T5-BYE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="72" translatesAutoresizingMaskIntoConstraints="NO" id="kkP-oA-hOl">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="kkP-oA-hOl">
                                 <rect key="frame" x="10" y="114" width="355" height="503"/>
                                 <subviews>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Crying" translatesAutoresizingMaskIntoConstraints="NO" id="U8W-jB-jpv">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="281"/>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Love" translatesAutoresizingMaskIntoConstraints="NO" id="U8W-jB-jpv">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="282"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="esX-Lh-AEm" appends="YES" id="3e2-UT-ROx"/>
@@ -30,7 +30,7 @@
                                         </connections>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="I fell in love today..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d35-uL-mR0">
-                                        <rect key="frame" x="0.0" y="353" width="355" height="30"/>
+                                        <rect key="frame" x="0.0" y="332" width="355" height="73"/>
                                         <color key="textColor" red="0.94901960780000005" green="0.87058823529999996" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -44,9 +44,14 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVM-BE-dka">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="48"/>
                                                 <color key="backgroundColor" red="0.94901960780000005" green="0.87058823529999996" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="43N-Av-gZw"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Add"/>
+                                                <state key="normal" title="Add">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="addMoodPressed:" destination="2be-L5-HtX" eventType="touchUpInside" id="7iR-6r-kyD"/>
                                                 </connections>
@@ -90,7 +95,7 @@
         <scene sceneID="kNo-lj-mgb">
             <objects>
                 <tableViewController id="YFb-jb-sgG" customClass="MoodTableViewController" customModule="moodTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pka-6G-xTC">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pka-6G-xTC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,7 +110,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7kf-9b-gRn" userLabel="Root Stack View">
                                             <rect key="frame" x="10" y="10" width="355" height="69.5"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xhY-Tb-ijK">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xhY-Tb-ijK">
                                                     <rect key="frame" x="0.0" y="0.0" width="68" height="69.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="68" id="Y7p-nq-MRt"/>
@@ -182,6 +187,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Crying" width="299.5" height="282.5"/>
+        <image name="Love" width="298.5" height="282"/>
     </resources>
 </document>

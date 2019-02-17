@@ -26,8 +26,13 @@ class MoodAddViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        subscribeToKeybordNotifications()
         updateImage(name: imageNameArray[currentImage])
         moodTextField.text = ""
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribeFromKeyboardNotifications()
     }
     
     @IBAction func addMoodPressed(_ sender: UIButton) {
@@ -35,9 +40,9 @@ class MoodAddViewController: UIViewController, UITextFieldDelegate {
         
         // Pass back data.
         let mood = Mood(imageName: imageNameArray[currentImage],message: moodTextField.text ?? "", date: dateString)
+        print("called here")
         didSaveMood?(mood)
-        
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func swiped(_ sender: UISwipeGestureRecognizer) {
@@ -68,5 +73,40 @@ class MoodAddViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return false
+    }
+    
+    // MARK: Keyboard Modifications
+    
+    func subscribeToKeybordNotifications(){
+        
+        //Initiation of notification observation
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification){
+        
+        //sets y-coordinate of the view above the keyboard if bottom text is selected
+        view.frame.origin.y = moodTextField.isFirstResponder ? -getKeyboardHeight(notification) : 0
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification){
+        view.frame.origin.y = 0
+    }
+    
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        
+        //Gets keyboard height
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        
+        //Removes this control view as observer for notifications
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 }

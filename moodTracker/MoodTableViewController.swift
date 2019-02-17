@@ -28,6 +28,11 @@ class MoodTableViewController: UITableViewController {
             self.moods = moodArray!
             self.tableView.reloadData()
         }
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: nil)
+        cancelButton.tintColor = UIColor(red: 242/255, green: 222/255, blue: 43/255, alpha: 1)
+        self.navigationItem.backBarButtonItem = cancelButton
+        
+        self.tableView.separatorColor = UIColor(red: 242/255, green: 222/255, blue: 43/255, alpha: 1)
     }
 
     // MARK: - Table view data source
@@ -44,7 +49,7 @@ class MoodTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! MoodTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "moodCell", for: indexPath) as! MoodTableViewCell
 
         let moodInstance = moods[indexPath.row]
         
@@ -56,11 +61,13 @@ class MoodTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "moodAddVC") as! MoodAddViewController
+        guard let vc = segue.destination as? MoodAddViewController else {
+            print("Failed to instantiate mood VC")
+            return
+        }
         vc.didSaveMood = { [weak self] mood in
             
             self?.moods.append(mood)
-            
             // Resave element array into User defaults.
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self?.moods), forKey: moodArrayKey)
             
@@ -75,17 +82,18 @@ class MoodTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            moods.remove(at: indexPath.row)
+            // Resave element array into User defaults.
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(moods), forKey: moodArrayKey)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
